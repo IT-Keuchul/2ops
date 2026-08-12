@@ -49,7 +49,7 @@ def mcp_tools_to_openai_tools(mcp_tools: list) -> list[dict]:
             "function": {
                 "name": tool.name,
                 "description": tool.description or "",
-                "parameters": tool.inputSchema,
+                "parameters": getattr(tool, "input_schema", getattr(tool, "inputSchema", {})),
             },
         }
         for tool in mcp_tools
@@ -100,7 +100,7 @@ async def run_prompt_fallback(
         tools_desc.append({
             "name": t.name,
             "description": t.description,
-            "parameters": t.inputSchema,
+            "parameters": getattr(t, "input_schema", getattr(t, "inputSchema", {})),
         })
 
     system_prompt = (
