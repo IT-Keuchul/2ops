@@ -5,10 +5,10 @@
 2. 제어: move_forward(전진), move_backward(후진), turn_right(오른쪽 회전), turn_left(왼쪽 회전)
 """
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
 
 # MCP 서버 객체 생성
-mcp = FastMCP("Enhanced Controller & Calculator")
+mcp = MCPServer("Enhanced Controller & Calculator")
 
 
 # ==========================================
